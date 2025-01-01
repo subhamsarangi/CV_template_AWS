@@ -14,6 +14,12 @@ jobs:
       - name: Checkout the files
         uses: actions/checkout@v2
 
+      - name: Log environment variables for debugging
+        run: |
+          echo "REMOTE_HOST=${{ secrets.REMOTE_HOST }}"
+          echo "REMOTE_USER=${{ secrets.REMOTE_USER }}"
+          echo "TARGET=${{ secrets.TARGET }}"
+
       - name: Deploy to Server 1
         uses: easingthemes/ssh-deploy@main
         env:
@@ -29,9 +35,13 @@ jobs:
           username: ${{ secrets.REMOTE_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
+            # Logging variables to confirm proper values
+            echo "REMOTE_HOST=${{ secrets.REMOTE_HOST }}"
+            echo "REMOTE_USER=${{ secrets.REMOTE_USER }}"
+            echo "TARGET=${{ secrets.TARGET }}"
             sudo apt-get -y update
             sudo apt-get install -y apache2
             sudo systemctl start apache2
             sudo systemctl enable apache2
             cd home
-            sudo mv * /var/www/html
+            sudo mv * /var/www/html/
