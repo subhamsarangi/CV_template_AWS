@@ -10,3 +10,10 @@ USERNAME :: ubuntu
 TARGET_DIR :: home
 
 ### GITHUB WORKFLOW
+jobs:
+  deploy:
+    name: Deploy to EC2 on master branch push
+    steps:
+      - name: Checkout the files
+      - name: Deploy to Server
+      - name: Executing remote ssh commands using ssh key
