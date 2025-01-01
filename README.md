@@ -1,4 +1,4 @@
-# CV_template_AWS
+# CV_template_AWS [![Push-to-EC2](https://github.com/subhamsarangi/CV_template_AWS/actions/workflows/github-actions-ec2.yml/badge.svg)](https://github.com/subhamsarangi/CV_template_AWS/actions/workflows/github-actions-ec2.yml)
 
 ### Write code and make a repo
 
