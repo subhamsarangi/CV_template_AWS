@@ -6,9 +6,9 @@
 
 ### Github repo settings action secrets: 
 - SSH_PRIVATE_KEY :: contents of the pem file
-- REMOTE_HOST :: public ipv4 dns
-- REMOTE_USER :: ubuntu
-- TARGET :: home
+- SSH_HOSTNAME :: public ipv4 dns
+- SSH_USERNAME :: ubuntu
+- TARGET_DIR :: home
 
 ### Github workflow file
 
@@ -31,7 +31,7 @@ jobs:
 
       - name: Deploy to Server (example via SSH)
         run: |
-          ssh -i ${{ secrets.SSH_PRIVATE_KEY }} ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }} "cd /var/www/html && git pull && systemctl restart apache2"
+          ssh -i ${{ secrets.SSH_PRIVATE_KEY }} ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOSTNAME }} "cd /var/www/html && git pull && systemctl restart apache2"
 
 ```
 
